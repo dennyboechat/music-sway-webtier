@@ -1,0 +1,24 @@
+.MuiPaper-root.ms-card {
+    background-color: rgb(255, 255, 255, 0.03);
+    margin-bottom: 5px;
+}
+
+.MuiPaper-root.ms-accordion {
+    background-color: rgb(255, 255, 255, 0.01);
+    box-shadow: none;
+    margin-bottom: 3px;
+}
+
+.MuiPaper-root.ms-accordion:hover,
+.MuiPaper-root.ms-accordion.Mui-expanded {
+    background-color: rgb(255, 255, 255, 0.05);
+}
+
+.MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded,
+.MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiIconButton-root.MuiAccordionSummary-expandIcon.Mui-expanded {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ms-accordion.MuiAccordion-root:before {
+    background-color: transparent;
+}
