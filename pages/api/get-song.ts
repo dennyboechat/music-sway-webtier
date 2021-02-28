@@ -1,6 +1,7 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
 import { query } from '../../lib/db'
 import { getNewSong } from '../../lib/utils';
+import {forEach} from 'lodash';
 
 const typeDefs = gql`
 type SongEntry {
@@ -43,7 +44,7 @@ const resolvers = {
         )
 
         let song = getNewSong({ addEntry: false });
-        results.forEach(data => {
+        forEach(results, data => {
           song.id = data.songId;
           song.title = data.songTitle;
           song.artist = data.songArtist;
