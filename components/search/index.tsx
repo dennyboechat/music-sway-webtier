@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function SearchInput(props: { value: string, setValue, placeholder?: string }) {
     const classes = useStyles();
-    const inputRef = React.useRef();
+    const inputRef = React.useRef(null);
 
     const onCleanButtonClick = () => {
         props.setValue('');
