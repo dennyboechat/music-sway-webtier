@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'block',
       },
     },
+    appBar: {
+      backgroundColor: 'black',
+    }
   }),
 );
 
@@ -30,16 +33,16 @@ export default function Header(props: {searchValue: string, setSearchValue, sear
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography className={classes.title} variant="h6" noWrap>
             Music Sway
           </Typography>

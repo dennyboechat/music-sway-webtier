@@ -12,14 +12,17 @@ export default function IndexPage() {
   const [searchSongValue, setSearchSongValue] = useState('');
 
   if (isLoading) {
+    const songPanelHeight = 110;
     return (
-      <Container>
-        <Skeleton height={200} />
-        <Skeleton height={200} />
-        <Skeleton height={200} />
-        <Skeleton height={200} />
-        <Skeleton height={200} />
-      </Container>
+      <div>
+        <div className="header-placeholder">
+          <Skeleton height={50} width={200} className="songs-list-skeleton-search" />
+        </div>
+        <Container className="ms-container">
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+        </Container>
+      </div>
     )
   }
 
@@ -36,7 +39,7 @@ export default function IndexPage() {
     <div>
       <Header searchValue={searchSongValue} setSearchValue={setSearchSongValue} searchPlaceholder="title, artist, content" />
       <Nav />
-      <Container>
+      <Container className="ms-container">
         <Songs songs={sortedSongs} />
       </Container>
     </div>

@@ -52,7 +52,7 @@ function Song({ song }) {
                 {entry.title}
               </AccordionSummary>
               <AccordionDetails>
-                {entry.content}
+                <span className="formatted-text">{entry.content}</span>
               </AccordionDetails>
             </Accordion>
           ))
