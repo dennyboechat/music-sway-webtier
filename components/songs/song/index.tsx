@@ -9,25 +9,28 @@ import AccordionDetails from '@material-ui/core/AccordionDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 
-function Song({ song }) {
+function Song(props: { isDarkTheme: boolean, song }) {
   const [deleting, setDeleting] = useState(false)
 
   async function deleteSong() {
     setDeleting(true)
-    let res = await fetch(`/api/delete-song?id=${song.id}`, { method: 'DELETE' })
+    let res = await fetch(`/api/delete-song?id=${props.song.id}`, { method: 'DELETE' })
     let json = await res.json()
     if (!res.ok) throw Error(json.message)
     mutate('/api/get-songs')
     setDeleting(false)
   }
+
+  const cardClassName = props.isDarkTheme ? 'ms-card ms-card-dark' : 'ms-card ms-card-light';
+
   return (
-    <Card className="ms-card">
+    <Card className={cardClassName}>
       <CardContent>
         <Typography component="h4">
-          {song.title}
+          {props.song.title}
         </Typography>
         <Typography variant="caption" display="block" gutterBottom color="textSecondary">
-          {song.artist}
+          {props.song.artist}
         </Typography>
         {/* <div className="flex ml-4">
           <Button
@@ -43,11 +46,11 @@ function Song({ song }) {
           </Button>
         </div> */}
         {
-          song.entries && song.entries.map(entry => (
+          props.song.entries && props.song.entries.map(entry => (
             <Accordion className="ms-accordion">
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                id={`${song.id}-${entry.id}`}
+                id={`${props.song.id}-${entry.id}`}
               >
                 {entry.title}
               </AccordionSummary>

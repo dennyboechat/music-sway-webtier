@@ -1,7 +1,14 @@
 .MuiPaper-root.ms-card {
-    background-color: rgb(255, 255, 255, 0.03);
     margin-bottom: 5px;
     box-shadow: none;
+}
+
+.MuiPaper-root.ms-card-dark {
+    background-color: rgb(255, 255, 255, 0.03);
+}
+
+.MuiPaper-root.ms-card-light {
+    background-color: rgb(0, 0, 0, 0.03);
 }
 
 .MuiPaper-root.ms-card .MuiCardContent-root {
@@ -21,7 +28,7 @@
 
 .MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded,
 .MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiIconButton-root.MuiAccordionSummary-expandIcon.Mui-expanded {
-    color: rgba(255, 255, 255, 0.7);
+    opacity: 0.5;
 }
 
 .MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiAccordionSummary-root .MuiAccordionSummary-content {
@@ -38,7 +45,10 @@
 }
 
 .MuiAccordion-root.ms-accordion.Mui-expanded {
-    margin: 0;;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 3px;
 }
 
 .ms-container.MuiContainer-root {

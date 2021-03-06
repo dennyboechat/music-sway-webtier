@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import SongEntryForm from './songEntryForm';
 import Router from 'next/router'
 import Button from '@material-ui/core/Button'
+import Container from '@material-ui/core/Container'
 import { getNewSongEntry } from '../../lib/utils';
 
 export default function SongForm({ song, apiEndpoint, apiMethod }) {
@@ -51,7 +52,7 @@ export default function SongForm({ song, apiEndpoint, apiMethod }) {
   }
 
   return (
-    <>
+    <Container>
       <Button id="addEntry" onClick={addEntry}>
         {'Add Entry'}
       </Button>
@@ -92,6 +93,6 @@ export default function SongForm({ song, apiEndpoint, apiMethod }) {
           {submitting ? 'Saving ...' : 'Save'}
         </Button>
       </form>
-    </>
+    </Container>
   )
 }

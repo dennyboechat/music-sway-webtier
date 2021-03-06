@@ -7,7 +7,7 @@ import Songs from '@/components/songs'
 import { useSongs } from '@/lib/swr-hooks'
 import { filter } from 'lodash'
 
-export default function IndexPage() {
+export default function IndexPage(props: { isDarkTheme: boolean, setIsDarkTheme }) {
   const { songs, isLoading } = useSongs()
   const [searchSongValue, setSearchSongValue] = useState('');
 
@@ -19,6 +19,11 @@ export default function IndexPage() {
           <Skeleton height={50} width={200} className="songs-list-skeleton-search" />
         </div>
         <Container className="ms-container">
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
           <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
           <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
         </Container>
@@ -37,10 +42,16 @@ export default function IndexPage() {
 
   return (
     <div>
-      <Header searchValue={searchSongValue} setSearchValue={setSearchSongValue} searchPlaceholder="title, artist, content" />
+      <Header
+        isDarkTheme={props.isDarkTheme}
+        setIsDarkTheme={props.setIsDarkTheme}
+        searchValue={searchSongValue}
+        setSearchValue={setSearchSongValue}
+        searchPlaceholder="title, artist, content"
+      />
       <Nav />
       <Container className="ms-container">
-        <Songs songs={sortedSongs} />
+        <Songs isDarkTheme={props.isDarkTheme} songs={sortedSongs} />
       </Container>
     </div>
   )

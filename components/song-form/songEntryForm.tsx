@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
 import { remove } from 'lodash';
 
 export default function SongEntryForm({ entries, setEntries, entry, index }) {
@@ -35,12 +36,16 @@ export default function SongEntryForm({ entries, setEntries, entry, index }) {
       <label htmlFor={`entryContent_${index}`}>
         <h3 className="font-bold">Content</h3>
       </label>
-      <textarea
+      <TextField
         id={`entryContent_${index}`}
-        className="shadow border resize-none focus:shadow-outline w-full h-48"
-        name="content"
+        label="Content"
+        placeholder="Anything you want to have"
         value={entry.content}
+        rows={20}
         onChange={(e) => onValueChanged({ field: 'content', value: e.target.value })}
+        multiline
+        variant="filled"
+        style={{width: '100%'}}
       />
     </div>
   )

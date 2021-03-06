@@ -1,12 +1,12 @@
 import Song from './song';
 
-function Songs({ songs }) {
-  if (songs && songs.length > 0) {
+function Songs(props: { isDarkTheme: boolean, songs }) {
+  if (props.songs && props.songs.length > 0) {
     return (
       <div>
-        {songs.map(song => (
+        {props.songs.map(song => (
           <div key={song.id}>
-            <Song song={song} />
+            <Song isDarkTheme={props.isDarkTheme} song={song} />
           </div>
         ))}
       </div>
