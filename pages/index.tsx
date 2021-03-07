@@ -26,6 +26,7 @@ export default function IndexPage(props: { isDarkTheme: boolean, setIsDarkTheme 
           <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
           <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
           <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
+          <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
         </Container>
       </div>
     )

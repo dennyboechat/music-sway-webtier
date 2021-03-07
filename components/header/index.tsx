@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#000',
     },
     appBarLight: {
-      backgroundColor: '#999',
+      backgroundColor: '#2C3E50',
     }
   }),
 );

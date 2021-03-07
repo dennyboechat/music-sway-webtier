@@ -4,11 +4,11 @@
 }
 
 .MuiPaper-root.ms-card-dark {
-    background-color: rgb(255, 255, 255, 0.03);
+    background-color: rgb(255, 255, 255, 0.1);
 }
 
 .MuiPaper-root.ms-card-light {
-    background-color: rgb(0, 0, 0, 0.03);
+    background-color: rgb(0, 0, 0, 0.1);
 }
 
 .MuiPaper-root.ms-card .MuiCardContent-root {
@@ -16,14 +16,34 @@
 }
 
 .MuiPaper-root.ms-accordion {
-    background-color: rgb(255, 255, 255, 0.01);
     box-shadow: none;
     margin-bottom: 3px;
 }
 
-.MuiPaper-root.ms-accordion:hover,
-.MuiPaper-root.ms-accordion.Mui-expanded {
+.MuiPaper-root.ms-card-dark .MuiPaper-root.ms-accordion {
     background-color: rgb(255, 255, 255, 0.05);
+}
+
+.MuiPaper-root.ms-card-light .MuiPaper-root.ms-accordion {
+    background-color: rgb(255, 255, 255, 0.4);
+}
+
+.MuiPaper-root.ms-card-dark .MuiPaper-root.ms-accordion:hover,
+.MuiPaper-root.ms-card-dark .MuiPaper-root.ms-accordion.Mui-expanded {
+    background-color: rgb(255, 255, 255, 0.08);
+}
+
+.MuiPaper-root.ms-card-dark .MuiPaper-root.ms-accordion.Mui-expanded {
+    background-color: rgb(255, 255, 255, 0.1);
+}
+
+.MuiPaper-root.ms-card-light .MuiPaper-root.ms-accordion:hover,
+.MuiPaper-root.ms-card-light .MuiPaper-root.ms-accordion.Mui-expanded {
+    background-color: rgb(255, 255, 255, 0.6);
+}
+
+.MuiPaper-root.ms-card-light .MuiPaper-root.ms-accordion.Mui-expanded {
+    background-color: rgb(255, 255, 255, 0.8);
 }
 
 .MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded,

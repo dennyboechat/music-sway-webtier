@@ -6,19 +6,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Switch from '@material-ui/core/Switch';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        menuButton: {
-            marginRight: theme.spacing(2),
-        },
-    }),
-);
 
 export default function MainMenu(props: { isDarkTheme: boolean, setIsDarkTheme }) {
     const [drawerOpen, setDrawerOpen] = React.useState(false);
-    const classes = useStyles();
 
     const toggleDrawer = (value: boolean) => () => {
         setDrawerOpen(value);
@@ -32,7 +22,6 @@ export default function MainMenu(props: { isDarkTheme: boolean, setIsDarkTheme }
         <>
             <IconButton
                 edge="start"
-                className={classes.menuButton}
                 color="inherit"
                 aria-label="open drawer"
                 onClick={toggleDrawer(true)}

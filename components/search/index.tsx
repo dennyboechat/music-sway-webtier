@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
+import CloseIcon from '@material-ui/icons/Close';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -15,10 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
                 backgroundColor: fade(theme.palette.common.white, 0.25),
             },
             marginLeft: 0,
-            [theme.breakpoints.up('sm')]: {
-                marginLeft: theme.spacing(1),
-                width: 'auto',
-            },
+            display: 'flex',
         },
         searchIcon: {
             padding: theme.spacing(0, 2),
@@ -36,17 +33,13 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(1, 1, 1, 0),
             // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-            transition: theme.transitions.create('width'),
+            paddingRight: `calc(1em + ${theme.spacing(3)}px)`,
             width: '100%',
-            [theme.breakpoints.up('sm')]: {
-                width: '12ch',
-                '&:focus': {
-                    width: '20ch',
-                },
-            },
         },
         iconButton: {
-            padding: 10,
+            height: '100%',
+            position: 'absolute',
+            right: 0,
         },
     }),
 );
@@ -81,7 +74,7 @@ export default function SearchInput(props: { value: string, setValue, placeholde
             />
             {props.value &&
                 <IconButton id="searchCleanButton" className={classes.iconButton} onClick={onCleanButtonClick}>
-                    <HighlightOffOutlinedIcon />
+                    <CloseIcon />
                 </IconButton>
             }
         </div>

@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   const theme = isDarkTheme ? themeDark : themeLight;
+  const browserThemeColor = isDarkTheme ? '#000' : '#2C3E50';
   pageProps.isDarkTheme = isDarkTheme;
   pageProps.setIsDarkTheme = setIsDarkTheme;
 
@@ -26,6 +27,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Music Sway</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="theme-color" content={browserThemeColor} />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
