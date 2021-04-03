@@ -6,11 +6,10 @@ import themeLight from '../styles/themeLight';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import '../styles/index.css'
 import NoSleep from 'nosleep.js';
-import Footer from '@/components/footer'
+import ThemeContext from '../context/themeContext';
 
 function MyApp({ Component, pageProps }) {
-
-  const [isDarkTheme, setIsDarkTheme] = React.useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   useEffect(() => {
     const noSleep = new NoSleep();
@@ -18,23 +17,20 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   const theme = isDarkTheme ? themeDark : themeLight;
-  const browserThemeColor = isDarkTheme ? '#000' : '#2C3E50';
-  pageProps.isDarkTheme = isDarkTheme;
-  pageProps.setIsDarkTheme = setIsDarkTheme;
 
   return (
-    <>
+    <ThemeContext.Provider value={{ isDarkTheme, setIsDarkTheme }}>
       <Head>
         <title>Music Sway</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <meta name="theme-color" content={browserThemeColor} />
+        <meta name="theme-color" content="#000" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
-        {/* <Footer /> */}
       </ThemeProvider>
-    </>
+    </ThemeContext.Provider>
   )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme: Theme) =>
         search: {
             position: 'relative',
             borderRadius: theme.shape.borderRadius,
-            backgroundColor: fade(theme.palette.common.white, 0.15),
+            backgroundColor: fade(theme.palette.primary.contrastText, 0.08),
             '&:hover': {
-                backgroundColor: fade(theme.palette.common.white, 0.25),
+                backgroundColor: fade(theme.palette.primary.contrastText, 0.15),
             },
             marginLeft: 0,
             display: 'flex',
@@ -70,6 +70,7 @@ export default function SearchInput(props: { value: string, setValue, placeholde
                 inputProps={{ 'aria-label': 'search' }}
                 value={props.value}
                 onChange={e => { props.setValue(e.target.value) }}
+                autoComplete='off'
                 inputRef={inputRef}
             />
             {props.value &&

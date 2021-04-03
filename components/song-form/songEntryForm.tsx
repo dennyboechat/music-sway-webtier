@@ -21,31 +21,24 @@ export default function SongEntryForm({ entries, setEntries, entry, index }) {
         {'Delete'}
       </Button>
       <div className="py-2">
-        <label htmlFor={`entryTitle_${index}`}>
-          <h3 className="font-bold">Title</h3>
-        </label>
-        <input
+        <TextField
           id={`entryTitle_${index}`}
-          className="shadow border rounded w-full"
-          type="text"
-          name="title"
+          label="Header"
+          placeholder="A header for this section"
           value={entry.title}
-          onChange={(e) => onValueChanged({ field: 'title', value: e.target.value })}
+          onChange={e => onValueChanged({ field: 'title', value: e.target.value })}
         />
       </div>
-      <label htmlFor={`entryContent_${index}`}>
-        <h3 className="font-bold">Content</h3>
-      </label>
       <TextField
         id={`entryContent_${index}`}
         label="Content"
-        placeholder="Anything you want to have"
+        placeholder="Anything you want"
         value={entry.content}
         rows={20}
         onChange={(e) => onValueChanged({ field: 'content', value: e.target.value })}
         multiline
         variant="filled"
-        style={{width: '100%'}}
+        style={{ width: '100%' }}
       />
     </div>
   )

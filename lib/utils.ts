@@ -30,3 +30,16 @@ export const getNewSong = ({ addEntry }) => {
 //     }
 //     return null;
 // }
+
+export const pageScrollDown = (speed) => {
+    if (speed) {        
+        // window.scrollBy(0, 1);
+        
+        // const t = setTimeout(() => {pageScrollDown(speed)}, 500/speed);
+        
+        // if (speed > 20) {
+        //     clearTimeout(t);
+        // }
+
+    }
+}

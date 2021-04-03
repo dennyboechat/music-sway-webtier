@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import SongEntryForm from './songEntryForm';
 import Router from 'next/router'
 import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
 import Container from '@material-ui/core/Container'
 import { getNewSongEntry } from '../../lib/utils';
 
@@ -16,11 +17,11 @@ export default function SongForm({ song, apiEndpoint, apiMethod }) {
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
-      setSongTitle(song.title)  
-      setSongArtist(song.artist) 
+    setSongTitle(song.title)
+    setSongArtist(song.artist)
   }, [song.title, song.artist])
 
-  async function submitHandler(e) {    
+  async function submitHandler(e) {
     setSubmitting(true)
     e.preventDefault()
     try {
@@ -57,32 +58,24 @@ export default function SongForm({ song, apiEndpoint, apiMethod }) {
         {'Add Entry'}
       </Button>
       <form onSubmit={submitHandler}>
-        <div className="my-4">
-          <label htmlFor="title">
-            <h3 className="font-bold">Title</h3>
-          </label>
-          <input
-            id="title"
-            className="shadow border rounded w-full"
-            type="text"
-            name="title"
-            value={songTitle}
-            onChange={(e) => setSongTitle(e.target.value)}
-            required
-          />
+        <div>
+        <TextField
+          id="songTitle"
+          label="Title"
+          placeholder="Song Name"
+          value={songTitle}
+          onChange={e => setSongTitle(e.target.value)}
+          required
+        />
         </div>
-        <div className="my-4">
-          <label htmlFor="artist">
-            <h3 className="font-bold">Artist</h3>
-          </label>
-          <input
-            id="artist"
-            className="shadow border rounded w-full"
-            type="text"
-            name="artist"
-            value={songArtist}
-            onChange={(e) => setSongArtist(e.target.value)}
-          />
+        <div>
+        <TextField
+          id="artist"
+          label="Artist"
+          placeholder="Band/Singer"
+          value={songArtist}
+          onChange={(e) => setSongArtist(e.target.value)}
+        />
         </div>
         {
           songEntries.map((entry, index: number) => (

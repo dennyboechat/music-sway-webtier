@@ -46,7 +46,7 @@
     background-color: rgb(255, 255, 255, 0.8);
 }
 
-.MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded,
+.MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiAccordionSummary-root.Mui-expanded .ms-accordion-title,
 .MuiPaper-root.ms-accordion .MuiButtonBase-root.MuiIconButton-root.MuiAccordionSummary-expandIcon.Mui-expanded {
     opacity: 0.5;
 }
@@ -79,8 +79,9 @@
     background-color: transparent;
 }
 
-.formatted-text {
+.markdown-text {
     white-space: pre-line;
+    cursor: pointer;
 }
 
 .songs-list-skeleton {
@@ -95,4 +96,46 @@
     height: 56px;
     background-color: black;
     padding: 5px;
+    display: flex;
+}
+
+/* .MuiSlider-root.ms-accordion-scroll-speed {
+    width: 100px;
+} */
+
+.ms-logo {
+    padding: 20px;
+    text-align: center;
+}
+
+.paragraph-highlight-dark {
+    background-color: #2C3E50;
+}
+
+.paragraph-highlight-light {
+    background-color: #C2DFFF;
+}
+
+.song-card-header {
+    display: flex;
+}
+
+.song-card-title-header {
+    width: 100%;
+}
+
+.song-action-buttons {
+    float: right;
+    display: none;
+}
+
+.song-card-title-header:hover + .song-action-buttons,
+.song-action-buttons:hover {
+    display: block;
+}
+
+.song-action-buttons .MuiFab-root {
+    width: 18px;
+    height: 18px;
+    min-height: 18px;
 }

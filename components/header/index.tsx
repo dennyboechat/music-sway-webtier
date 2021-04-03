@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -21,26 +21,22 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'block',
       },
     },
-    appBarDark: {
-      backgroundColor: '#000',
+    appBar: {
+      backgroundColor: theme.palette.background.default,
+      boxShadow: 'none'
     },
-    appBarLight: {
-      backgroundColor: '#2C3E50',
-    }
   }),
 );
 
-export default function Header(props: { isDarkTheme: boolean, setIsDarkTheme, searchValue: string, setSearchValue, searchPlaceholder: string }) {
+export default function Header(props: { searchValue: string, setSearchValue, searchPlaceholder: string }) {
   const classes = useStyles();
-
-  const appBarClassName = props.isDarkTheme ? 'appBarDark' : 'appBarLight';
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes[appBarClassName]}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
-          <MainMenu isDarkTheme={props.isDarkTheme} setIsDarkTheme={props.setIsDarkTheme} />
-          <Typography className={classes.title} variant="h6" noWrap>
+          <MainMenu />
+          <Typography className={classes.title} component="h4" noWrap>
             Music Sway
           </Typography>
           <Search value={props.searchValue} setValue={props.setSearchValue} placeholder={props.searchPlaceholder} />

@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from "react";
 import { Skeleton } from '@material-ui/lab';
 import Nav from '@/components/nav'
 import Header from '@/components/header'
 import Container from '@material-ui/core/Container'
 import Songs from '@/components/songs'
 import { useSongs } from '@/lib/swr-hooks'
-import { filter } from 'lodash'
+import { forEach, orderBy } from 'lodash'
 
-export default function IndexPage(props: { isDarkTheme: boolean, setIsDarkTheme }) {
+export default function IndexPage() {
   const { songs, isLoading } = useSongs()
   const [searchSongValue, setSearchSongValue] = useState('');
 
@@ -16,7 +16,8 @@ export default function IndexPage(props: { isDarkTheme: boolean, setIsDarkTheme 
     return (
       <div>
         <div className="header-placeholder">
-          <Skeleton height={50} width={200} className="songs-list-skeleton-search" />
+          <Skeleton height={50} width={40} className="songs-list-skeleton-search" />
+          <Skeleton height={50} width={250} className="songs-list-skeleton-search" />
         </div>
         <Container className="ms-container">
           <Skeleton variant="rect" height={songPanelHeight} className="songs-list-skeleton" />
@@ -32,27 +33,37 @@ export default function IndexPage(props: { isDarkTheme: boolean, setIsDarkTheme 
     )
   }
 
-  let sortedSongs = songs;
-  if (searchSongValue.length > 0) {
-    sortedSongs = filter(sortedSongs, song => {
-      return song.title.toLowerCase().includes(searchSongValue.toLowerCase())
-        || song.artist.toLowerCase().includes(searchSongValue.toLowerCase())
-        || (song.entries && song.entries.some(entry => (entry.content && entry.content.toLowerCase().includes(searchSongValue.toLowerCase()))));
+  let sortedSongs = [];
+  if (songs.length > 0) {
+    forEach(songs, song => {
+      if (song.title.toLowerCase().startsWith(searchSongValue.toLowerCase())) {
+        song.filterOrder = 1;
+        sortedSongs.push(song);
+      } else if (song.title.toLowerCase().includes(searchSongValue.toLowerCase())) {
+        song.filterOrder = 2;
+        sortedSongs.push(song);
+      } else if (song.artist.toLowerCase().includes(searchSongValue.toLowerCase())) {
+        song.filterOrder = 3;
+        sortedSongs.push(song);
+      } else if (song.entries && song.entries.some(entry => (entry.content && entry.content.toLowerCase().includes(searchSongValue.toLowerCase())))) {
+        song.filterOrder = 4;
+        sortedSongs.push(song);
+      }
     });
+
+    sortedSongs = orderBy(sortedSongs, ['filterOrder']);
   }
 
   return (
     <div>
-      <Header
-        isDarkTheme={props.isDarkTheme}
-        setIsDarkTheme={props.setIsDarkTheme}
+      <Header      
         searchValue={searchSongValue}
         setSearchValue={setSearchSongValue}
         searchPlaceholder="title, artist, content"
       />
       <Nav />
       <Container className="ms-container">
-        <Songs isDarkTheme={props.isDarkTheme} songs={sortedSongs} />
+        <Songs songs={sortedSongs} />
       </Container>
     </div>
   )
