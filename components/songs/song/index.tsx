@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { mutate } from 'swr'
-import Button from '@material-ui/core/Button'
+import React, { useState, useEffect, useContext, createRef, Ref } from 'react';
+// import { mutate } from 'swr'
+// import Button from '@material-ui/core/Button'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Accordion from '@material-ui/core/Accordion'
@@ -8,24 +8,27 @@ import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
+// import Slider from '@material-ui/core/Slider';
 import Markdown from '../../../components/markdown';
-import { pageScrollDown } from '../../../lib/utils';
+// import { pageScrollDown } from '../../../lib/utils';
 import themeContext from '../../../context/themeContext';
-import InteractiveButton from '../../interactive-button';
-import SnackBar from '../../snack-bar';
+// import InteractiveButton from '../../interactive-button';
+// import SnackBar from '../../snack-bar';
+import { forEach } from 'lodash';
 
 function Song(props: { song }) {
-  const [deleting, setDeleting] = useState(false);
+  // const [deleting, setDeleting] = useState(false);
   // const [scrollSpeed, setScrollSpeed] = useState(0);
   const { isDarkTheme } = useContext(themeContext);
-  const markdownRef = React.createRef();
+  const markdownRef = createRef<HTMLSpanElement>();
 
   useEffect(() => {
     if (markdownRef && markdownRef.current) {
       let paragraphs = markdownRef.current.getElementsByTagName('p');
       if (paragraphs) {
-        [...paragraphs].forEach(elem => elem.addEventListener('click', highlightParagraph));
+        forEach(paragraphs, paragraph => {
+          paragraph.addEventListener('click', highlightParagraph);
+        });
       }
     }
   }, [])
@@ -104,7 +107,7 @@ function Song(props: { song }) {
                 /> */}
               </AccordionSummary>
               <AccordionDetails>
-                <span ref={markdownRef}>
+                <span ref={markdownRef as Ref<HTMLSpanElement>}>
                   <Markdown className="markdown-text" content={entry.content} />
                 </span>
               </AccordionDetails>
